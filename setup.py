@@ -17,7 +17,7 @@ setup(
 		'deansi',
 		],
 	scripts=[
-		'deansi',
+		'deansi.py',
 		],
 	include_package_data = True,
 	test_suite = 'deansi_test',
