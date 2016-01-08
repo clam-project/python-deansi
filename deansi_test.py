@@ -28,6 +28,9 @@ html_template = """\
 import unittest
 
 class DeansiTest(unittest.TestCase) :
+	def setUp(self):
+		self.maxDiff=None
+
 	def assertDeansiEqual(self, expected, inputText) :
 		return self.assertEqual(expected, deansi(inputText))
 

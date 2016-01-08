@@ -30,7 +30,17 @@ You can overwrite stylesheets by placing new rules after this minimal one.
 # TODO: Support 51-55 decorations (framed, encircled, overlined, no frame/encircled, no overline)
 
 import re
-import cgi
+
+# python3 compatibility
+try:
+	from html import escape as htmlescape
+except ImportError:
+	from cgi import escape as htmlescape
+try:
+	xrange
+except NameError:
+	xrange=range
+
 
 colorCodes = {
 	0 : 'black',
@@ -153,7 +163,7 @@ def stateToClasses(attribs, fg, bg) :
 		)
 
 def deansi(text) :
-	text = cgi.escape(text)
+	text = htmlescape(text)
 	blocks = text.split("\033")
 	state = set(), None, None
 	ansiBlocks = blocks[:1]
