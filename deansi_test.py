@@ -280,11 +280,13 @@ now changing attribute to \033[1mbright and then
 unsetting \033[39m foreground and \033[0mall attribs.
 """
 #		print (terminalInput)
-		expected = open("deansi-b2b.html").read()
+		with open("deansi-b2b.html") as f:
+			expected = f.read()
 		result = html_template % (styleSheet(), deansi(terminalInput))
 
 		if (result!=expected) :
-			open("deansi-failed.html","w").write(result)
+			with open("deansi-failed.html","w") as f:
+				f.write(result)
 		self.assertMultiLineEqual(expected, result)
 
 if __name__ == "__main__" :
