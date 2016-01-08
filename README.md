@@ -4,7 +4,7 @@
 
 ## Features
 
-- You can use it as module or as a command line tool.
+- It can be used either as module or as a command line tool.
 - Supports most ‘m’ codes (colors and attributes).
 - The apperance can be customized using styles in a very convenient and powerful way.
 	- ANSI attributes are mapped to stylable HTML classes (`ansi_yellow`, `ansi_bright`...)
@@ -43,7 +43,48 @@ print html_template.format(
 
 ### Customizing stylesheets
 
-You can change the colors displayed adding style rules after the default ones, for example if you want to change the yellow color when the ansi bright attribute apply, and not to apply bold font (the default) you can say:
+The default stylesheet looks like this:
+
+```css
+.ansi_terminal { background-color: #222; color: #cfc; }
+.ansi_terminal { white-space: pre; font-family: monospace; }
+.ansi_black { color: black; }
+.ansi_red { color: darkred; }
+.ansi_green { color: darkgreen; }
+.ansi_yellow { color: orange; }
+.ansi_blue { color: darkblue; }
+.ansi_magenta { color: purple; }
+.ansi_cyan { color: darkcyan; }
+.ansi_white { color: lightgray; }
+.ansi_bright.ansi_black { color: gray; }
+.ansi_bright.ansi_red { color: red; }
+.ansi_bright.ansi_green { color: green; }
+.ansi_bright.ansi_yellow { color: yellow; }
+.ansi_bright.ansi_blue { color: blue; }
+.ansi_bright.ansi_magenta { color: magenta; }
+.ansi_bright.ansi_cyan { color: cyan; }
+.ansi_bright.ansi_white { color: white; }
+.ansi_bgblack { background-color: black; }
+.ansi_bgred { background-color: red; }
+.ansi_bggreen { background-color: green; }
+.ansi_bgyellow { background-color: yellow; }
+.ansi_bgblue { background-color: blue; }
+.ansi_bgmagenta { background-color: magenta; }
+.ansi_bgcyan { background-color: cyan; }
+.ansi_bgwhite { background-color: white; }
+.ansi_bright { font-weight: bold; }
+.ansi_faint { opacity: .5; }
+.ansi_italic { font-style: italic; }
+.ansi_underscore { text-decoration: underline; }
+.ansi_blink { text-decoration: blink; }
+.ansi_reverse { border: 1pt solid; }
+.ansi_hide { opacity: 0; }
+.ansi_strike { text-decoration: line-through; }
+```
+
+
+Because of the cascading behaviour of CSS whichever style rules after the default ones, will override those ones.
+For example if you want to change the yellow color when the ansi bright attribute apply, instead of applying bold font you can say:
 
 ```css
 .ansi_yellow.ansi_bright { color: #FF7; font-weight: inherit; }
@@ -55,7 +96,6 @@ If you want several behaviours in the same html you can use css magic like that:
 .my_own_ansi_enviroment .ansi_inverse { font-style: italic; border: none; }
 ```
 
-I look forward applying it to TestFarm soon so all the miss-conversions are fixed.
 
 ## Usage as commandline tool
 
