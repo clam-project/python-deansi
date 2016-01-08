@@ -33,7 +33,8 @@ import re
 
 # python3 compatibility
 try:
-	from html import escape as htmlescape
+	from html import escape as _htmlescape
+	htmlescape=lambda s: _htmlescape(s,quote=False)
 except ImportError:
 	from cgi import escape as htmlescape
 try:
