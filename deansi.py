@@ -40,7 +40,7 @@ colorCodes = {
 	4 : 'blue',
 	5 : 'magenta',
 	6 : 'cyan',
-	7 :	'white',
+	7 : 'white',
 }
 attribCodes = {
 	1 : 'bright',
@@ -173,15 +173,74 @@ def deansi(text) :
 
 if __name__ == "__main__" :
 	import sys
-	html_template = """\
+
+	import argparse
+
+	parser = argparse.ArgumentParser(
+		description="Converts coloured console output into equivalent HTML",
+		)
+	parser.add_argument(
+		'-s',
+		'--style',
+		metavar='FILE',
+		help="use FILE as stylesheet",
+		)
+	parser.add_argument(
+		'-t',
+		'--template',
+		metavar='FILE',
+		help="use FILE as html template",
+		)
+	parser.add_argument(
+		'--dark',
+		action='store_true',
+		help="use the dark background style",
+		)
+	parser.add_argument(
+		'input',
+		metavar="INPUT_FILE",
+		nargs='?',
+		help="the console input to convert (default stdin)"
+		)
+
+	parser.add_argument(
+		'output',
+		metavar="OUTPUT_FILE",
+		nargs='?',
+		help="the file where to drop the html output (default stdout)"
+		)
+
+	args = parser.parse_args()
+
+	default_template = """\
 <style>
-.ansi_terminal { background-color: #222; color: #cfc; }
 %s
 </style>
 <div class='ansi_terminal'>%s</div>
 """
 
-	inputFile = file(sys.argv[1]) if sys.argv[1:] else sys.stdin
-	print (html_template % (styleSheet(), deansi(inputFile.read())))
+	with open(args.input) if args.input else sys.stdin as inputFile:
+		deansied = deansi(inputFile.read())
+
+	if args.template:
+		with open(args.template) as templateFile:
+			template = templateFile.read()
+	else:
+		template = default_template
+
+	if args.style:
+		with open(args.style) as styleFile:
+			style = styleFile.read()
+	else:
+		style = styleSheet()
+
+	if args.dark:
+		 style += """\n.ansi_terminal { background-color: #222; color: #cfc; }"""
+
+	with open(args.output) if args.output else sys.stdout as outputFile:
+		outputFile.write(template % (
+			style, 
+			deansied,
+			))
 	sys.exit(0)
 

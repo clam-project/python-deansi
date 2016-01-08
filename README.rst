@@ -18,12 +18,10 @@ Features
    -  You can define the style depending on the enclosing container so
       that different styles can coexist in a single document.
 
--  It is test driven developed and back2back tested, so it is quite
-   reliable, and in the long term features can be extended being quite
-   sure we are not breaking existing functionality.
+-  It has been test driven developed and back2back tested.
 
-Usage as module
----------------
+Usage as Python module
+----------------------
 
 -  ``deansi.styleSheet()``: returns the default stylesheet for the ANSI
    classes you can customize.
@@ -50,8 +48,41 @@ output:
         ansiText = deansi.deansi(ansiInput),
         )
 
+Command line use
+----------------
+
+``deansi`` can be used as pipe based command line tool. A quite simple
+use, could be:
+
+.. code:: bash
+
+    $ ls --color | deansi.py > ls.html
+
+Besides, we can use some options to modify its behaviour:
+
+.. code:: bash
+
+    $ deansy.py --help
+
+    usage: deansi.py [-h] [-s FILE] [-t FILE] [--dark] [INPUT_FILE] [OUTPUT_FILE]
+
+    Converts coloured console output into equivalent HTML
+
+    positional arguments:
+      INPUT_FILE            the console input to convert (default stdin)
+      OUTPUT_FILE           the file where to drop the html output (default
+                            stdout)
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -s FILE, --style FILE
+                            use FILE as stylesheet
+      -t FILE, --template FILE
+                            use FILE as html template
+      --dark                use the dark background style
+
 Customizing stylesheets
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 The default stylesheet looks like this:
 
@@ -107,13 +138,4 @@ like that:
 .. code:: css
 
     .my_own_ansi_enviroment .ansi_inverse { font-style: italic; border: none; }
-
-Usage as commandline tool
--------------------------
-
-``deansi`` can be used as pipe based command line tool.
-
-.. code:: bash
-
-    $ ls --color | deansi.py > ls.html
 
