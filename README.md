@@ -1,5 +1,6 @@
 # python-deansi: Turns coloured console output into the equivalent html
 
+[![Build Status](https://travis-ci.org/clam-project/python-deansi.svg?branch=master)](https://travis-ci.org/clam-project/python-deansi)
 
 
 ## Features
