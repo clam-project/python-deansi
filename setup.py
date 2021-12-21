@@ -23,10 +23,6 @@ setup(
 			'deansi=deansi:main',
 		]
 	},
-
-	scripts=[
-		'deansi.py',
-	],
 	include_package_data = True,
 	test_suite = 'deansi_test',
 	classifiers = [
