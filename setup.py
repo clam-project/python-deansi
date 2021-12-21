@@ -11,15 +11,22 @@ setup(
 	author = "David García Garzón",
 	author_email = "voki@canvoki.net",
 	url = 'https://github.com/GuifiBaix/python-deansi',
+	long_description_content_type='text/markdown',
 	long_description = readme,
 	license = 'GNU General Public License v3 or later (GPLv3+)',
 	packages=find_packages(exclude=['*[tT]est*']),
 	py_modules=[
 		'deansi',
-		],
+	],
+	entry_points={
+		'console_scripts': [
+			'deansi=deansi:main',
+		]
+	},
+
 	scripts=[
 		'deansi.py',
-		],
+	],
 	include_package_data = True,
 	test_suite = 'deansi_test',
 	classifiers = [

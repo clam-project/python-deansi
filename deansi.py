@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
 Copyright 2012 David Garcia Garzon
 
@@ -182,7 +182,7 @@ def deansi(text) :
 
 
 
-if __name__ == "__main__" :
+def main():
 	import sys
 
 	import argparse
@@ -254,4 +254,7 @@ if __name__ == "__main__" :
 			deansied,
 			))
 	sys.exit(0)
+
+if __name__ == "__main__" :
+    main()
 
