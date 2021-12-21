@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 from setuptools import setup, find_packages
 
-readme = open("README.rst").read()
+readme = open("README.md").read()
 
 setup(
 	name = "deansi",
