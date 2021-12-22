@@ -1,6 +1,9 @@
 # python-deansi: Turns coloured console output into the equivalent html
 
 [![Build Status](https://travis-ci.org/clam-project/python-deansi.svg?branch=master)](https://travis-ci.org/clam-project/python-deansi)
+[![Coverage Status](https://coveralls.io/repos/github/clam-project/python-deansi/badge.svg?branch=master)](https://coveralls.io/github/clam-project/python-deansi?branch=master)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/deansi)
+![PyPI - Version](https://img.shields.io/pypi/v/deansi)
 
 
 ## Features
