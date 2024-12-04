@@ -13,7 +13,7 @@ setup(
 	url = 'https://github.com/GuifiBaix/python-deansi',
 	long_description_content_type='text/markdown',
 	long_description = readme,
-	license = 'GNU General Public License v3 or later (GPLv3+)',
+	license = 'GNU Affero General Public License v3 or later (AGPLv3+)',
 	packages=find_packages(exclude=['*[tT]est*']),
 	py_modules=[
 		'deansi',
