@@ -6,7 +6,7 @@ readme = open("README.md").read()
 
 setup(
 	name = "deansi",
-	version = "1.2",
+	version = "1.2.1",
 	description = "ANSI codes to HTML converter",
 	author = "David García Garzón",
 	author_email = "voki@canvoki.net",
